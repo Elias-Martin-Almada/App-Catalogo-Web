@@ -31,22 +31,20 @@
             <div class="mb-3">
                 <asp:Button Text="Aceptar" ID="btnAceptar" CssClass="btn btn-primary" OnClick="btnAceptar_Click" runat="server" />
                 <a class="btn btn-primary" href="ArticulosLista.aspx">Cancelar</a>
-                <asp:Button ID="btnInactivar" OnClick="btnInactivar_Click" CssClass="btn btn-warning" runat="server" Text="Inactivar" />
+                <%--<asp:Button ID="btnInactivar" OnClick="btnInactivar_Click" CssClass="btn btn-warning" runat="server" Text="Inactivar" />--%>
             </div>
-            <%--<asp:UpdatePanel ID="UpdatePanel2" runat="server">
+            <asp:UpdatePanel ID="UpdatePanel2" runat="server">
                 <ContentTemplate>
                     <div class="mb-3">
                         <asp:Button Text="Eliminar" ID="btnEliminar" OnClick="btnEliminar_Click" CssClass="btn btn-danger" runat="server" />
-                    </div>
-                    <%if (ConfirmaEliminacion)
-                        {%>
-                    <div class="mb-3">
+                        <%if (ConfirmaEliminacion)
+                            {%>
                         <asp:CheckBox Text="Confirmar Eliminación" ID="chkConfirmaEliminacion" runat="server" />
                         <asp:Button Text="Eliminar" ID="btnConfirmaEliminar" OnClick="btnConfirmaEliminar_Click" CssClass="btn btn-outline-danger" runat="server" />
+                        <%}%>
                     </div>
-                    <%}%>
                 </ContentTemplate>
-            </asp:UpdatePanel>--%>
+            </asp:UpdatePanel>
         </div>
 
         <div class="col-6">
@@ -66,10 +64,10 @@
                 </ContentTemplate>
             </asp:UpdatePanel>
             <div class="col-3">
-                 <div class="mb-3">
+                <div class="mb-3">
                     <label for="txtPrecio" class="form-label">Precio: </label>
                     <asp:TextBox runat="server" ID="txtPrecio" CssClass="form-control" />
-                </div>          
+                </div>
             </div>
         </div>
     </div>

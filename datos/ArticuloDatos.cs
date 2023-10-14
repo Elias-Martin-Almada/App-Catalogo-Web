@@ -265,38 +265,23 @@ namespace controlador
 
             try
             {
-                string consulta = "select Codigo, Nombre, A.Descripcion, ImagenUrl, Precio, M.Descripcion as Marca, C.Descripcion as Categoria, A.IdMarca, A.IdCategoria, A.Id from ARTICULOS A, MARCAS M, CATEGORIAS C where M.Id = A.IdMarca AND C.Id = A.IdCategoria AND Precio > 0 AND ";
-                if (campo == "Precio")
-                {
-                    switch (criterio)
-                    {
-                        case "Mayor a":
-                            consulta += "Precio > " + filtro;
-                            break;
-                        case "Menor a":
-                            consulta += "Precio < " + filtro;
-                            break;
-                        default:
-                            consulta += "Precio = " + filtro;
-                            break;
-                    }
-                }
-                else if (campo == "Codigo")
-                {
-                    switch (criterio)
-                    {
-                        case "Comienza con":
-                            consulta += "Codigo like '" + filtro + "%' ";
-                            break;
-                        case "Termina con":
-                            consulta += "Codigo like '%" + filtro + "'";
-                            break;
-                        default:
-                            consulta += "Codigo like '%" + filtro + "%'";
-                            break;
-                    }
-                }
-                else
+                string consulta = "select Codigo, Nombre, A.Descripcion, ImagenUrl, Precio, M.Descripcion as Marca, C.Descripcion as Categoria, A.IdMarca, A.IdCategoria, A.Id from ARTICULOS A, MARCAS M, CATEGORIAS C where M.Id = A.IdMarca AND C.Id = A.IdCategoria AND ";
+                //if (campo == "Precio")
+                //{
+                //    switch (criterio)
+                //    {
+                //        case "Mayor a":
+                //            consulta += "Precio > " + filtro;
+                //            break;
+                //        case "Menor a":
+                //            consulta += "Precio < " + filtro;
+                //            break;
+                //        default:
+                //            consulta += "Precio = " + filtro;
+                //            break;
+                //    }
+                //}
+                if (campo == "Nombre")
                 {
                     switch (criterio)
                     {
@@ -308,6 +293,36 @@ namespace controlador
                             break;
                         default:
                             consulta += "Nombre like '%" + filtro + "%'";
+                            break;
+                    }
+                }
+                else if (campo == "Marca") 
+                {
+                    switch (criterio)
+                    {
+                        case "Comienza con":
+                            consulta += "M.Descripcion like '" + filtro + "%' ";
+                            break;
+                        case "Termina con":
+                            consulta += "M.Descripcion like '%" + filtro + "'";
+                            break;
+                        default:
+                            consulta += "M.Descripcion like '%" + filtro + "%'";
+                            break;
+                    }
+                }
+                else
+                {
+                    switch (criterio)
+                    {
+                        case "Comienza con":
+                            consulta += "C.Descripcion like '" + filtro + "%' ";
+                            break;
+                        case "Termina con":
+                            consulta += "C.Descripcion like '%" + filtro + "'";
+                            break;
+                        default:
+                            consulta += "C.Descripcion like '%" + filtro + "%'";
                             break;
                     }
                 }
@@ -387,6 +402,21 @@ namespace controlador
             }
         }
 
-        
+        //public void eliminarLogico(int id, decimal precio)
+        //{
+        //    try
+        //    {
+        //        AccesoDatos datos = new AccesoDatos();
+        //        datos.setearConsulta("update ARTICULOS set Precio = -@precio where Id = @id");
+        //        datos.setearParametro("@id", id);
+        //        datos.setearParametro("@precio", precio);
+        //        datos.ejecutarAccion();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw ex;
+        //    }
+        //}
+
     }
 }

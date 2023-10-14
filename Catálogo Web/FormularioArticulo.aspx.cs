@@ -11,9 +11,11 @@ namespace Catálogo_Web
 {
     public partial class FormularioArticulo : System.Web.UI.Page
     {
+        public bool ConfirmaEliminacion { get; set; } // Esto es para el If del front, Checked.
         protected void Page_Load(object sender, EventArgs e)
         {
             txtId.Enabled = false;
+            ConfirmaEliminacion = false;
             try
             {   
                 // Configuracion inicial de la pantalla.
@@ -45,6 +47,9 @@ namespace Catálogo_Web
                     //Articulo seleccionado = lista[0];
                     Articulo seleccionado = (datos.listarArticulos(id))[0]; // Misma lista, mas corta. 
 
+                    // Guardo Disco seleccionado en Session: por ej para usar en el Inactivar.
+                    Session.Add("articuloSeleccionado", seleccionado);
+
                     // Pre cargar todos los campos.
                     txtId.Text = id;
                     txtCodigo.Text = seleccionado.Codigo;
@@ -57,6 +62,12 @@ namespace Catálogo_Web
                     // Pre cargar los desplegables.
                     ddlMarca.SelectedValue = seleccionado.Marca.Id.ToString();
                     ddlCategoria.SelectedValue = seleccionado.Categoria.Id.ToString();
+
+                    //configurar Acciones:
+                    //if (seleccionado.Precio < 0)
+                    //{
+                    //    btnInactivar.Text = "Reactivar";
+                    //}
                 }
             }
             catch (Exception ex)
@@ -104,14 +115,50 @@ namespace Catálogo_Web
             }
         }
 
-        protected void btnInactivar_Click(object sender, EventArgs e)
-        {
-
-        }
-
         protected void txtUrlImagen_TextChanged(object sender, EventArgs e)
         {
             imgArticulo.ImageUrl = txtUrlImagen.Text;
         }
+
+        protected void btnEliminar_Click(object sender, EventArgs e)
+        {
+            ConfirmaEliminacion = true;
+        }
+
+        protected void btnConfirmaEliminar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (chkConfirmaEliminacion.Checked)
+                {
+                    ArticuloDatos datos = new ArticuloDatos();
+                    datos.eliminar(int.Parse(txtId.Text));
+                    Response.Redirect("ArticulosLista.aspx");
+                }
+            }
+            catch (Exception ex)
+            {
+                Session.Add("error", ex);
+            }
+        }
+
+        //protected void btnInactivar_Click(object sender, EventArgs e)
+        //{
+        //    Para que funcione correctamente este Metodo falta Agregar antes del from 
+        //    en listarArticulos el (A.Precio).
+        //    
+        //    try
+        //    {
+        //        ArticuloDatos datos = new ArticuloDatos();
+        //        Articulo seleccionado = (Articulo)Session["articuloSeleccionado"]; // Recupero el Articulo de Session.
+
+        //        datos.eliminarLogico(seleccionado.Id, !seleccionado.Precio);
+        //        Response.Redirect("ArticulosLista.aspx");
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Session.Add("error", ex);
+        //    }
+        //}
     }
 }
