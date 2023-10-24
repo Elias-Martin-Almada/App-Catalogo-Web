@@ -111,7 +111,6 @@ namespace Catálogo_Web
             catch (Exception ex)
             {
                 Session.Add("error", ex);
-                throw;
             }
         }
 

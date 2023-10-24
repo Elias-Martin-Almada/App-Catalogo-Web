@@ -34,8 +34,8 @@
                         <div class="card-body">
                             <h5 class="card-title"><%#Eval("Nombre") %></h5>
                             <p class="card-text"><%#Eval("Descripcion") %></p>
-                            <a href="FormularioArticulo.aspx?=id<%#Eval("Id") %>" class="btn btn-primary">Ver Detalle</a>
-                            <asp:Button Text="Ejemplo" CssClass="btn btn-primary" ID="btnEjemplo" OnClick="btnEjemplo_Click" CommandArgument='<%#Eval("Id") %>' CommandName="ArticuloId" runat="server"  />
+                            <a href="FormularioArticulo.aspx?=id<%#Eval("Id") %>" class="btn btn-custom-azul">Ver Detalle</a>
+                            <asp:Button Text="Ejemplo" CssClass="btn  btn-custom-azul" ID="btnEjemplo" OnClick="btnEjemplo_Click" CommandArgument='<%#Eval("Id") %>' CommandName="ArticuloId" runat="server"  />
                         </div>
                     </div>
                 </div>

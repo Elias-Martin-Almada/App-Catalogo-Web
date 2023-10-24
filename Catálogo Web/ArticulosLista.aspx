@@ -58,7 +58,7 @@
         <div class="row">
             <div class="col-3">
                 <div class="mb-3">
-                    <asp:Button Text="Buscar" runat="server" CssClass="btn btn-primary" OnClick="btnBuscar_Click" id="btnBuscar" />
+                    <asp:Button Text="Buscar" runat="server" CssClass="btn btn-custom-azul" OnClick="btnBuscar_Click" id="btnBuscar" />
                 </div>
             </div>
         </div>
@@ -80,6 +80,6 @@
             <asp:CommandField HeaderText="Acción" ShowSelectButton="true" SelectText="✏" />
         </Columns>
     </asp:GridView>
-    <a href="FormularioArticulo.aspx" class="btn btn-primary">Agregar</a>
+    <a href="FormularioArticulo.aspx" class="btn  btn-custom-azul">Agregar</a>
         
 </asp:Content>

@@ -15,6 +15,12 @@ namespace Catálogo_Web
         public bool FiltroAvanzado { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!Seguridad.esAdmin(Session["usuario"]))
+            {
+                Session.Add("error", "Se requiere permisos de admin para acceder a esta pantalla");
+                Response.Redirect("Error.aspx");
+            }
+
             FiltroAvanzado = chkAvanzado.Checked;
             // Este PostBack afecta el Paginado 2, si lo saco funciona, pero NO el boton Accion al filtrar.
             //if (!IsPostBack) 
