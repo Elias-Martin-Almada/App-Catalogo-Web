@@ -2,13 +2,26 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <style>
+        body{
+            background-image:url("fondoBody2.jpg");
+        }
+        .formulario-destacado {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+    </style>
 
     <div class="row">
-        <div class="col-10 col-md-4">
+        <hr />
+        <hr />
+        <div class="col-12 col-md-4 formulario-destacado">
             <h2>Ingresar</h2>
             <div class="mb-3">
                 <label class="form-label">Email</label>
-                <asp:TextBox runat="server" CssClass="form-control" ID="txtEmail" />
+                <asp:TextBox runat="server" CssClass="form-control" Required="" ID="txtEmail" />
             </div>
             <div class="mb-3">
                 <label class="form-label">Contraseña</label>

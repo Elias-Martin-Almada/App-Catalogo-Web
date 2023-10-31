@@ -45,6 +45,7 @@
     <Compile Include="ArticuloDatos.cs" />
     <Compile Include="CategoriaDatos.cs" />
     <Compile Include="EmailService.cs" />
+    <Compile Include="FavoritosDatos.cs" />
     <Compile Include="MarcaDatos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Seguridad.cs" />

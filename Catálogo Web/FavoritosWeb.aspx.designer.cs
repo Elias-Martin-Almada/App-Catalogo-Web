@@ -11,7 +11,16 @@ namespace Catálogo_Web
 {
 
 
-    public partial class Favoritos
+    public partial class FavoritosWeb
     {
+
+        /// <summary>
+        /// Control repRepetidor.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater repRepetidor;
     }
 }

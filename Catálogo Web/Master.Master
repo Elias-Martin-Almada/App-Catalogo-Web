@@ -20,7 +20,7 @@
     </style>
 </head>
 
-<body style="background-color: #f5f5f5;">
+<body style="background-color: white;">
     <form id="form1" runat="server">
         <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: teal;">
             <div class="container-fluid">
@@ -33,13 +33,13 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link custom-link" aria-current="page" href="/">HOME</a>
+                            <a class="nav-link custom-link" aria-current="page" href="Default.aspx">INICIO</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link custom-link" href="ArticulosLista.aspx">LISTA</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link custom-link" href="Favoritos.aspx">FAVORITOS</a>
+                            <a class="nav-link custom-link" href="FavoritosWeb.aspx">FAVORITOS</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link custom-link" href="MiPerfil.aspx">MI PERFIL</a>

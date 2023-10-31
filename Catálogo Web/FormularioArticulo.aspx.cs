@@ -55,7 +55,8 @@ namespace Catálogo_Web
                     txtCodigo.Text = seleccionado.Codigo;
                     txtNombre.Text = seleccionado.Nombre;
                     txtDescripcion.Text = seleccionado.Descripcion;
-                    txtPrecio.Text = seleccionado.Precio.ToString();
+                    //txtPrecio.Text = seleccionado.Precio.ToString("0.00");
+                    txtPrecio.Text = "$ " + string.Format("{0:N0}", seleccionado.Precio); // Formatear el precio como "5.500"
                     // Precarga Imagen.
                     txtUrlImagen.Text = seleccionado.UrlImagen;
                     txtUrlImagen_TextChanged(sender, e);
@@ -72,8 +73,8 @@ namespace Catálogo_Web
             }
             catch (Exception ex)
             {
-                Session.Add("error", ex);
-                throw;
+                Session.Add("error", ex.ToString());
+                Response.Redirect("Error.aspx");
             }
         }
 
@@ -110,7 +111,8 @@ namespace Catálogo_Web
             }
             catch (Exception ex)
             {
-                Session.Add("error", ex);
+                Session.Add("error", ex.ToString());
+                Response.Redirect("Error.aspx");
             }
         }
 
@@ -137,7 +139,8 @@ namespace Catálogo_Web
             }
             catch (Exception ex)
             {
-                Session.Add("error", ex);
+                Session.Add("error", ex.ToString());
+                Response.Redirect("Error.aspx");
             }
         }
 
@@ -156,7 +159,8 @@ namespace Catálogo_Web
         //    }
         //    catch (Exception ex)
         //    {
-        //        Session.Add("error", ex);
+        //        Session.Add("error", ex.ToString());
+        //        Response.Redirect("Error.aspx");
         //    }
         //}
     }

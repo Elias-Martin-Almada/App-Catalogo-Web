@@ -41,6 +41,16 @@ namespace Catálogo_Web
         {
             try
             {
+                // Si no es valida la pantalla, no Guardo todo de nuevo. Controles Validators.
+                Page.Validate();
+                if (!Page.IsValid)
+                {
+                    return;
+                }
+                // Si la página es válida, agregar clases is-valid a los campos.
+                txtNombre.CssClass = "form-control is-valid";
+                txtApellido.CssClass = "form-control is-valid";
+
                 UsuarioDatos datos = new UsuarioDatos();
                 Usuario user = (Usuario)Session["usuario"];
                 // Escribir Imagen:

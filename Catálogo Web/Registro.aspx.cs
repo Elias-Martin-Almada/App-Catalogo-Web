@@ -20,6 +20,20 @@ namespace Catálogo_Web
         {
             try
             {
+                // Si no es valida la pantalla de registro, no entra. Controles Validators.
+                Page.Validate();
+                if (!Page.IsValid)
+                {
+                    return;
+                }
+
+                // Validacion: Le mando SOLO el control, que es tipo Text. 
+                if (Validacion.validaTextoVacio(txtEmail) || Validacion.validaTextoVacio(txtPassword))
+                {
+                    Session.Add("error", "Debes completar ambos campos...");
+                    Response.Redirect("Error.aspx");
+                }
+
                 Usuario user = new Usuario();
                 UsuarioDatos datos = new UsuarioDatos(); 
                 EmailService emailService = new EmailService();
@@ -33,6 +47,7 @@ namespace Catálogo_Web
                 emailService.enviarEmail();
                 Response.Redirect("Default.aspx", false);
             }
+            //catch (System.Threading.ThreadAbortException ex) { } 
             catch (Exception ex)
             {
                 Session.Add("error", ex.ToString());

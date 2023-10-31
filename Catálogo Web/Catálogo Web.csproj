@@ -70,8 +70,12 @@
     <Content Include="ArticulosLista.aspx" />
     <Content Include="css\Botones.css" />
     <Content Include="Default.aspx" />
+    <Content Include="DetalleArticulo.aspx" />
     <Content Include="Error.aspx" />
-    <Content Include="Favoritos.aspx" />
+    <Content Include="FavoritosWeb.aspx" />
+    <Content Include="fondoBody.jpg" />
+    <Content Include="fondoBody2.jpg" />
+    <Content Include="fondoTarjeta.jpg" />
     <Content Include="FormularioArticulo.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Login.aspx" />
@@ -80,6 +84,7 @@
     <Content Include="script_db\PROCEDURES.sql" />
     <Content Include="script_db\USERS table.sql" />
     <Content Include="Web.config" />
+    <Content Include="wpp.png" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ArticulosLista.aspx.cs">
@@ -96,6 +101,13 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="DetalleArticulo.aspx.cs">
+      <DependentUpon>DetalleArticulo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DetalleArticulo.aspx.designer.cs">
+      <DependentUpon>DetalleArticulo.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Error.aspx.cs">
       <DependentUpon>Error.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -103,12 +115,12 @@
     <Compile Include="Error.aspx.designer.cs">
       <DependentUpon>Error.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Favoritos.aspx.cs">
-      <DependentUpon>Favoritos.aspx</DependentUpon>
+    <Compile Include="FavoritosWeb.aspx.cs">
+      <DependentUpon>FavoritosWeb.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Favoritos.aspx.designer.cs">
-      <DependentUpon>Favoritos.aspx</DependentUpon>
+    <Compile Include="FavoritosWeb.aspx.designer.cs">
+      <DependentUpon>FavoritosWeb.aspx</DependentUpon>
     </Compile>
     <Compile Include="FormularioArticulo.aspx.cs">
       <DependentUpon>FormularioArticulo.aspx</DependentUpon>
@@ -149,6 +161,7 @@
     <Compile Include="Registro.aspx.designer.cs">
       <DependentUpon>Registro.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Validacion.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Master.Master" />

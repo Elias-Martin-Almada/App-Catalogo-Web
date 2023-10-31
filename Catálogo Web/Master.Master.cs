@@ -16,23 +16,42 @@ namespace Catálogo_Web
             ImgLogo.ImageUrl = "https://png.pngtree.com/png-vector/20190802/ourlarge/pngtree-cart-icon-design-vector-png-image_1644380.jpg";
             ImgAvatar.ImageUrl = "https://simg.nicepng.com/png/small/202-2022264_usuario-annimo-usuario-annimo-user-icon-png-transparent.png";
 
-            if (!(Page is Login || Page is Registro || Page is Default))
+            //if (!(Page is Login || Page is Registro || Page is Default))
+            //{
+            //    if (!Seguridad.sesionActiva(Session["usuario"]))
+            //    {
+            //        Response.Redirect("Login.aspx", false);
+            //    }
+            //    else
+            //    {
+            //        Usuario user = (Usuario)Session["usuario"];
+            //        lblUser.Text = user.Email;
+            //        if ( !string.IsNullOrEmpty(user.ImagenPerfil))
+            //        {
+            //            ImgAvatar.ImageUrl = "~/Images/" + user.ImagenPerfil;
+            //        }
+            //    }
+            //}
+            if (!(Page is Login || Page is Registro || Page is Default || Page is DetalleArticulo || Page is Error))
             {
                 if (!Seguridad.sesionActiva(Session["usuario"]))
                 {
                     Response.Redirect("Login.aspx", false);
                 }
-                else
-                {
-                    Usuario user = (Usuario)Session["usuario"];
-                    lblUser.Text = user.Email;
-                    if ( !string.IsNullOrEmpty(user.ImagenPerfil))
-                    {
-                        ImgAvatar.ImageUrl = "~/Images/" + user.ImagenPerfil;
-                    }
-                }
             }
-
+            if (Seguridad.sesionActiva(Session["usuario"]))
+            {
+                Usuario user = (Usuario)Session["usuario"];
+                lblUser.Text = user.Email;
+                if (!string.IsNullOrEmpty(user.ImagenPerfil))
+                    ImgAvatar.ImageUrl = "~/Images/" + user.ImagenPerfil;
+                else
+                    ImgAvatar.ImageUrl = ImgAvatar.ImageUrl; // Sino tiene foto el usuario cargo url.                     
+            }
+            //else
+            //{
+            //    ImgAvatar.ImageUrl = ImgAvatar.ImageUrl;     // Sino tiene sessionActiva cargo url.
+            //}
         }
 
         protected void btnSalir_Click(object sender, EventArgs e)

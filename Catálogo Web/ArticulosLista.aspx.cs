@@ -23,19 +23,30 @@ namespace Catálogo_Web
 
             FiltroAvanzado = chkAvanzado.Checked;
             // Este PostBack afecta el Paginado 2, si lo saco funciona, pero NO el boton Accion al filtrar.
-            //if (!IsPostBack) 
-            //{
-                ArticuloDatos datos = new ArticuloDatos();
-                Session.Add("listaArticulos", datos.listarConSP());
-                dgvArticulos.DataSource = Session["listaArticulos"];
-                dgvArticulos.DataBind();
-            //}
+            if (!IsPostBack)
+            {
+                //ArticuloDatos datos = new ArticuloDatos();
+                //Session.Add("listaArticulos", datos.listarConSP());
+                //dgvArticulos.DataSource = Session["listaArticulos"];
+                //dgvArticulos.DataBind();
+                CargarDatos();
+            }
+        }
+
+        // Con este metodo soluciono el problema del Buscador y el boton Accion.
+        private void CargarDatos() 
+        {
+            ArticuloDatos datos = new ArticuloDatos();
+            Session["listaArticulos"] = datos.listarConSP();
+            dgvArticulos.DataSource = Session["listaArticulos"];
+            dgvArticulos.DataBind();
         }
 
         protected void dgvArticulos_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             dgvArticulos.PageIndex = e.NewPageIndex;
-            dgvArticulos.DataBind();
+            //dgvArticulos.DataBind();
+            CargarDatos();
         }
 
         protected void dgvArticulos_SelectedIndexChanged(object sender, EventArgs e)
@@ -76,7 +87,7 @@ namespace Catálogo_Web
             string filtro = txtFiltroAvanzado.Text;
             try
             {
-                ArticuloDatos datos = new ArticuloDatos();
+                ArticuloDatos datos = new ArticuloDatos();        
                 dgvArticulos.DataSource = datos.filtrar(campo, criterio, filtro);
                 dgvArticulos.DataBind();
             }
