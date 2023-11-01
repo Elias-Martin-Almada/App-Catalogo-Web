@@ -2,21 +2,29 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <h2>favoritos</h2>
+    <style> 
+        body{
+            background-image:url("fondoBody2.jpg");
+        }
+    </style>
+    <hr />
+    <hr />
+    <h2 style="color:white">favoritos</h2>
 
-    <div class="row row-cols-1 row-cols-md-3 g-4">
+    <div class="row row-cols-1 row-cols-md-4 g-4">
 
         <asp:Repeater ID="repRepetidor" runat="server">
             <ItemTemplate>
                 <div class="col">
-                    <div class="card" style="background-color:lightgray; margin: 15px; max-width: 200px;">
+                    <div class="card" style="background-color:lightgray; margin: 15px; max-width: 300px;">
                         <img src="<%#Eval("UrlImagen") %>" class="card-img-top" alt="...">
                         <div class="card-body">
                             <div style="display: flex; justify-content: center;">
                                 <h5 class="card-title"><%#Eval("Nombre") %></h5>
                             </div>
                              <div style="display: flex; justify-content: center;">
-                                <a href="DetalleArticulo.aspx?id=<%#Eval("Id") %>" class="btn btn-custom-azul" style="margin-right: 10px">Ver Detalle</a>
+                                <a href="DetalleArticulo.aspx?id=<%#Eval("Id") %>" class="btn btn-custom-azul" style="margin-right: 4px">Detalles</a>
+                                <asp:Button Text="Eliminar" CssClass="btn  btn-custom-azul" ID="btnEliminarFavorito" OnClick="btnEliminarFavorito_Click" CommandArgument='<%#Eval("Id") %>' CommandName="ArticuloId" runat="server"  />   
                              </div>
                         </div>
                     </div>

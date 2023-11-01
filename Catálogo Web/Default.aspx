@@ -43,9 +43,8 @@
                             <%--<p class="card-text"><%#Eval("Descripcion") %></p>--%>
                              <div style="display: flex; justify-content: center;">
                                 <a href="DetalleArticulo.aspx?id=<%#Eval("id") %>" class="btn btn-custom-azul" style="margin-right: 10px">Ver Detalle</a>
-                                <%--<a href="FavoritosWeb.aspx?id=<%#Eval("id") %>" class="btn btn-custom-azul">Favoritos+</a>--%>
+                                <asp:Button Text="Favoritos+" CssClass="btn  btn-custom-azul" ID="btnFavoritos" OnClick="btnFavoritos_Click" CommandArgument='<%#Eval("Id") %>' CommandName="ArticuloId" runat="server"  />
                              </div>
-                            <%--<asp:Button Text="Ejemplo" CssClass="btn  btn-custom-azul" ID="btnEjemplo" OnClick="btnEjemplo_Click" CommandArgument='<%#Eval("Id") %>' CommandName="ArticuloId" runat="server"  />--%>
                         </div>
                     </div>
                 </div>

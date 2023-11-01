@@ -81,6 +81,7 @@
     <Content Include="Login.aspx" />
     <Content Include="MiPerfil.aspx" />
     <Content Include="Registro.aspx" />
+    <Content Include="script_db\CATALOGO_WEB_DB.sql" />
     <Content Include="script_db\PROCEDURES.sql" />
     <Content Include="script_db\USERS table.sql" />
     <Content Include="Web.config" />

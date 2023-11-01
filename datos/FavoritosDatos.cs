@@ -14,7 +14,6 @@ namespace controlador
         {
             List<Favoritos> listaFavoritos = new List<Favoritos>();
             AccesoDatos datos = new AccesoDatos();
-
             try
             {
                 datos.setearConsulta("SELECT IdArticulo FROM FAVORITOS WHERE IdUser = @IdUser");

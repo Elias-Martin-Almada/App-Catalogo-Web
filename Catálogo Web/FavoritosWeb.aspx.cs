@@ -60,5 +60,21 @@ namespace Catálogo_Web
                 return null; // Retornar null si no se encuentra el artículo.
             }
         }
+
+        protected void btnEliminarFavorito_Click(object sender, EventArgs e)
+        {
+            // obtengo el ID del Articulo.
+            int idArticulo = int.Parse(((Button)sender).CommandArgument);
+            // Obtener el ID del usuario actual, por ejemplo, desde la sesión o cualquier otro método.
+            if (Session["usuario"] != null)
+            {
+                Usuario user = (Usuario)Session["usuario"];
+                int idUsuario = user.Id;
+
+                FavoritosDatos favoritosDatos = new FavoritosDatos();
+                favoritosDatos.EliminarFavorito(idUsuario, idArticulo);
+                Response.Redirect("FavoritosWeb.aspx");
+            }
+        }
     }
 }

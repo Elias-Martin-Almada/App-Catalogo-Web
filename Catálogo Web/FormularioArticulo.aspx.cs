@@ -134,7 +134,7 @@ namespace Catálogo_Web
                 {
                     ArticuloDatos datos = new ArticuloDatos();
                     datos.eliminar(int.Parse(txtId.Text));
-                    Response.Redirect("ArticulosLista.aspx");
+                    Response.Redirect("ArticulosLista.aspx", false);
                 }
             }
             catch (Exception ex)
