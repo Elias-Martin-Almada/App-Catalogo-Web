@@ -2,12 +2,34 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link rel="stylesheet" type="text/css" href="/css/Botones.css" />
+
+    <%--Codigo js para la vista previa de Imagenes a cargar en el Input--%>
+    <script type="text/javascript">
+        function previewImage() {
+            var fileInput = document.getElementById('<%= txtUrlImagen.ClientID %>');
+            var imgArticulo = document.getElementById('<%= imgArticulo.ClientID %>');
+
+            if (fileInput.files && fileInput.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    imgArticulo.src = e.target.result;
+                };
+
+                reader.readAsDataURL(fileInput.files[0]);
+            } else {
+                imgArticulo.src = "https://grupoact.com.ar/wp-content/uploads/2020/04/placeholder.png";
+            }
+        }
+    </script>
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <style>
-        body{
-            background-image:url("fondoBody2.jpg");
+        body {
+            background-image: url("fondoBody2.jpg");
         }
+
         .formulario-destacado {
             background-color: white;
             padding: 20px;
@@ -15,6 +37,7 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
         }
     </style>
+
     <%--Script para usar UpdatePanel--%>
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
 
@@ -45,16 +68,15 @@
                 <label for="txtDescripcion" class="form-label">Descripcion: </label>
                 <asp:TextBox runat="server" TextMode="MultiLine" ID="txtDescripcion" CssClass="form-control" />
             </div>
-            
+
         </div>
 
         <div class="col-10 col-md-6">
             <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                 <ContentTemplate>
                     <div class="mb-3">
-                        <label for="txtUrlImagen" class="form-label">Url Imagen</label>
-                        <asp:TextBox runat="server" ID="txtUrlImagen" CssClass="form-control"
-                            AutoPostBack="true" OnTextChanged="txtUrlImagen_TextChanged" />
+                        <label for="txtUrl" class="form-label">Url Imagen</label>
+                        <input type="file" id="txtUrlImagen" runat="server" class="form-control" accept="image/*" onchange="previewImage()" />
                     </div>
                     <asp:Image ImageUrl="https://grupoact.com.ar/wp-content/uploads/2020/04/placeholder.png"
                         runat="server" ID="imgArticulo" Width="60%" />

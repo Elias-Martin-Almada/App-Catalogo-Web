@@ -6,10 +6,20 @@
         body{
             background-image:url("fondoBody2.jpg");
         }
+        .titulos{
+            margin:auto;
+            text-align:center;  
+            background-color: #c2fbd7;
+            border-radius:10px;
+            padding:5px
+        }
     </style>
     <hr />
     <hr />
-    <h2 style="color:white">favoritos</h2>
+    <hr />
+    <div class="container titulos">   
+        <h2>⚡ Favoritos ⚡</h2>        
+    </div>
 
     <div class="row row-cols-1 row-cols-md-4 g-4">
 
@@ -17,7 +27,8 @@
             <ItemTemplate>
                 <div class="col">
                     <div class="card" style="background-color:lightgray; margin: 15px; max-width: 300px;">
-                        <img src="<%#Eval("UrlImagen") %>" class="card-img-top" alt="...">
+                        <%--<img src="<%#Eval("UrlImagen") %>" class="card-img-top" alt="...">--%>
+                        <img src='<%# ResolveUrl("~/ImgArticulo/" + Eval("UrlImagen")) %>' class="card-img-top" alt="...">
                         <div class="card-body">
                             <div style="display: flex; justify-content: center;">
                                 <h5 class="card-title"><%#Eval("Nombre") %></h5>

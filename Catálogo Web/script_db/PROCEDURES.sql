@@ -20,7 +20,7 @@ where M.Id = A.IdMarca AND C.Id = A.IdCategoria
 
 go
 
-ALTER procedure [dbo].[storedModificarArticulo]
+CREATE procedure [dbo].[storedModificarArticulo]
 @codigo varchar(50),
 @nombre varchar(50),
 @descripcion varchar(150),

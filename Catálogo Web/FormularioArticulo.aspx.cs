@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using dominio;
 using controlador;
+using System.IO; // Agrega esta directiva
 
 namespace Catálogo_Web
 {
@@ -56,10 +57,11 @@ namespace Catálogo_Web
                     txtNombre.Text = seleccionado.Nombre;
                     txtDescripcion.Text = seleccionado.Descripcion;
                     //txtPrecio.Text = seleccionado.Precio.ToString("0.00");
-                    txtPrecio.Text = "$ " + string.Format("{0:N0}", seleccionado.Precio); // Formatear el precio como "5.500"
+                    txtPrecio.Text = string.Format("{0:N0}", seleccionado.Precio); // Formatear el precio como "5.500"
                     // Precarga Imagen.
-                    txtUrlImagen.Text = seleccionado.UrlImagen;
-                    txtUrlImagen_TextChanged(sender, e);
+                    if (!string.IsNullOrEmpty(seleccionado.UrlImagen))
+                        imgArticulo.ImageUrl = "~/ImgArticulo/" + seleccionado.UrlImagen;
+
                     // Pre cargar los desplegables.
                     ddlMarca.SelectedValue = seleccionado.Marca.Id.ToString();
                     ddlCategoria.SelectedValue = seleccionado.Categoria.Id.ToString();
@@ -88,9 +90,36 @@ namespace Catálogo_Web
                 nuevo.Codigo = txtCodigo.Text;
                 nuevo.Nombre = txtNombre.Text;
                 nuevo.Descripcion = txtDescripcion.Text;
-                nuevo.UrlImagen = txtUrlImagen.Text;
-                nuevo.Precio = decimal.Parse(txtPrecio.Text);
+                //nuevo.UrlImagen = txtUrlImagen.Text;
+                // AGREGADO:
+                //if (Request.QueryString["id"] != null)
+                //{
+                //    // Importante: Si estás modificando un artículo existente, obtén su ID antes de guardar la imagen.
+                //    nuevo.Id = int.Parse(txtId.Text);
+                //}
 
+                // Escribir Imagen:
+                if (txtUrlImagen.PostedFile.FileName != "")
+                {
+                    // AGREGADO
+                    string ruta = Server.MapPath("./ImgArticulo/");
+                    // Generar un nombre de archivo único basado en la fecha y hora.
+                    string nombreArchivo = "articulo-" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".jpg";
+                    txtUrlImagen.PostedFile.SaveAs(Path.Combine(ruta, nombreArchivo));
+                    nuevo.UrlImagen = nombreArchivo;
+                }
+                else // Este else solociona el error del Modifificar sin cambiar img.
+                {
+                    // Si no se selecciona una nueva imagen, conserva la imagen actual
+                    Articulo seleccionado = (Articulo)Session["articuloSeleccionado"];
+                    // Pregunto por el Error si no cargan Imagen.
+                    nuevo.UrlImagen = seleccionado != null ? seleccionado.UrlImagen : "";                   
+                }
+                // Leer Imagen: estas lineas dan error porque no se llega a cargar la pagina para encontrar "imgArticulo"
+                //Image img = (Image)FindControl("imgArticulo");
+                //img.ImageUrl = "~/Images/" + nuevo.UrlImagen;
+
+                nuevo.Precio = string.IsNullOrEmpty(txtPrecio.Text) ? 0 : decimal.Parse(txtPrecio.Text);
                 nuevo.Marca = new Marca();
                 nuevo.Marca.Id = int.Parse(ddlMarca.SelectedValue);
                 nuevo.Categoria = new Categoria();
@@ -118,7 +147,7 @@ namespace Catálogo_Web
 
         protected void txtUrlImagen_TextChanged(object sender, EventArgs e)
         {
-            imgArticulo.ImageUrl = txtUrlImagen.Text;
+            
         }
 
         protected void btnEliminar_Click(object sender, EventArgs e)

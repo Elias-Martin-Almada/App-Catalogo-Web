@@ -43,7 +43,7 @@ namespace Catálogo_Web
                 user.Id = datos.insertarNuevo(user);
                 Session.Add("usuario", user); // Con esto queda la sesion Abierta, "AutoLogin".
 
-                emailService.armarCorreo(user.Email, "Bienvenido Usuario", "Hola te damos la bienvenida a la Aplicación...");
+                emailService.armarCorreo(user.Email, "Bienvenido Usuario", "INGRESASTE AL CATÁLOGO AETERNUM...");
                 emailService.enviarEmail();
                 Response.Redirect("Default.aspx", false);
             }

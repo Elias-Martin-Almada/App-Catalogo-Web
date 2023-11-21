@@ -13,7 +13,9 @@ namespace Catálogo_Web
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            ImgLogo.ImageUrl = "https://png.pngtree.com/png-vector/20190802/ourlarge/pngtree-cart-icon-design-vector-png-image_1644380.jpg";
+            //ImgLogo.ImageUrl = "https://png.pngtree.com/png-vector/20190802/ourlarge/pngtree-cart-icon-design-vector-png-image_1644380.jpg";
+            string rutaLogo = "~/Logo.jpg";
+            ImgLogo.ImageUrl = rutaLogo;
             ImgAvatar.ImageUrl = "https://simg.nicepng.com/png/small/202-2022264_usuario-annimo-usuario-annimo-user-icon-png-transparent.png";
 
             //if (!(Page is Login || Page is Registro || Page is Default))
@@ -32,7 +34,7 @@ namespace Catálogo_Web
             //        }
             //    }
             //}
-            if (!(Page is Login || Page is Registro || Page is Default || Page is DetalleArticulo || Page is Error))
+            if (!(Page is Login || Page is Registro || Page is Default || Page is DetalleArticulo || Page is Informacion || Page is Contacto || Page is Error))
             {
                 if (!Seguridad.sesionActiva(Session["usuario"]))
                 {

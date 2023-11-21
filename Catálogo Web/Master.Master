@@ -36,14 +36,22 @@
                             <a class="nav-link custom-link" aria-current="page" href="Default.aspx">INICIO</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link custom-link" href="ArticulosLista.aspx">LISTA</a>
-                        </li>
-                        <li class="nav-item">
                             <a class="nav-link custom-link" href="FavoritosWeb.aspx">FAVORITOS</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link custom-link" href="MiPerfil.aspx">MI PERFIL</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link custom-link" href="Informacion.aspx">+ INFORMACION</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link custom-link" href="Contacto.aspx">SOBRE NOSOTROS</a>
+                        </li>
+                        <%if (controlador.Seguridad.esAdmin(Session["usuario"])) {%>
+                        <li class="nav-item">
+                            <a class="nav-link custom-link" href="ArticulosLista.aspx">[ CONFIGURAR ]</a>
+                        </li>
+                        <%}%>                    
                     </ul>
                 </div>
                 <%--Inicio/Registro--%>

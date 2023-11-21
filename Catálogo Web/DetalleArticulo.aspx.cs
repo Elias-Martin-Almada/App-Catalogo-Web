@@ -27,7 +27,9 @@ namespace Catálogo_Web
                 lblMarca.Text = "Marca: " + seleccionado.Marca.Descripcion.ToString();
                 lblCategoria.Text = "Categoria: " + seleccionado.Categoria.Descripcion.ToString();
                 lblPrecio.Text = "Precio: $ " + string.Format("{0:N0}", seleccionado.Precio); // Formatear el precio como "5.500"
-                imgArticulo.ImageUrl = seleccionado.UrlImagen;
+                //imgArticulo.ImageUrl = seleccionado.UrlImagen;
+                if (!string.IsNullOrEmpty(seleccionado.UrlImagen))
+                    imgArticulo.ImageUrl = "~/ImgArticulo/" + seleccionado.UrlImagen;
             }
         }
     }
